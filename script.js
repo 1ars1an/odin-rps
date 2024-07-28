@@ -40,10 +40,8 @@ function gameLogic(user, comp) {
 }
 
 function playRound(userChoice) {
-    console.log('called');
     let compChoice = compHand()
     let roundOutcome = gameLogic(userChoice, compChoice)
-    console.log(roundOutcome);
     if (roundOutcome == 'user') {
         userScore++;
     }
