@@ -1,6 +1,19 @@
 let userScore = 0;
 let compScore = 0;
 
+let userBox = document.querySelector('.uscore');
+let compBox = document.querySelector('.cscore');
+
+let playBox = document.querySelector('.playBox');
+
+let endBox = document.querySelector('.gameEnd');
+endBox.style.display = "none";
+
+function display() {
+    userBox.textContent = `Your Score: ${userScore}`;
+    compBox.textContent = `AI Score: ${compScore}`;
+}
+
 function compHand() {
     let randChoice = Math.random()
     if (randChoice <= 0.33) {
@@ -26,22 +39,45 @@ function gameLogic(user, comp) {
     }
 }
 
-function playRound() {
-    let userChoice = prompt("Play Rock, Paper Or Scissors!").toLowerCase();
+function playRound(userChoice) {
+    console.log('called');
     let compChoice = compHand()
     let roundOutcome = gameLogic(userChoice, compChoice)
+    console.log(roundOutcome);
     if (roundOutcome == 'user') {
         userScore++;
     }
     else if (roundOutcome == 'comp') {
         compScore++;
     }
+
+    display();
+
+    if (userScore === 5 || compScore === 5) {
+        playBox.style.display = 'none';
+        endBox.style.display = 'flex';
+
+        let textBox = document.querySelector('.textBox');
+        textBox.textContent = (userScore >= compScore) ? `You Won With ${userScore} Points Over ${compScore}` : `You Lost With ${userScore} Points Behind ${compScore}`;
+
+        let playAgain = document.querySelector('.gameStart');
+        playAgain.onclick = resetGame;
+    }
 }
 
-playRound();
-playRound();
-playRound();
-playRound();
-playRound();
+function resetGame() {
+    userScore = 0;
+    compScore = 0;
+    display();
+    playBox.style.display = 'flex';
+    endBox.style.display = 'none';
+}
 
-(userScore >= compScore) ? console.log(`You Won With ${userScore} Points Over ${compScore}`) : console.log(`You Lost With ${userScore} Points Behind ${compScore}`)
+display();
+
+let btnList = document.querySelectorAll('.playBtn');
+btnList.forEach(btn => btn.addEventListener('click', e => {
+    playRound(e.target.textContent.toLowerCase());
+}))
+
+

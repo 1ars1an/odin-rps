@@ -1,0 +1,63 @@
+body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.header {
+    font-size: 40px;
+    text-align: center;
+    color: red;
+    background-color: black;
+    padding: 10px;
+}
+
+.playBox {
+    flex: 1;
+    display: flex;
+    gap: 120px;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border: 2px solid burlywood;
+}
+
+.gameEnd {
+    flex: 1;
+    display: flex;
+    gap: 120px;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border: 2px solid burlywood;
+}
+
+.playBtn, .startBtn {
+    padding: 40px 60px;
+    border-radius: 4px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(187,187,255,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.textBox {
+    padding: 10px;
+    color: green;
+    border: 2px dotted gold;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornsilk;
+    padding: 20px;
+}
+
+.scores {
+    padding: 10px;
+    border: 2px solid goldenrod;
+    margin: 0px auto;
+}
